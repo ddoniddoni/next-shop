@@ -1,7 +1,17 @@
 import type { NextConfig } from "next";
+import { withSentryConfig } from "@sentry/nextjs";
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig = {
+  experimental: {
+    instrumentationHook: true,
+  },
 };
 
-export default nextConfig;
+export default withSentryConfig(nextConfig, {
+  org: "nope-nr",
+  project: "repairshop",
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+  silent: false,
+  widenClientFileUpload: true,
+  disableLogger: true,
+});
