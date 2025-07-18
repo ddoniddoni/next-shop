@@ -1,11 +1,7 @@
 import type { NextConfig } from "next";
 import { withSentryConfig } from "@sentry/nextjs";
 
-const nextConfig = {
-  experimental: {
-    instrumentationHook: true,
-  },
-};
+const nextConfig = {};
 
 export default withSentryConfig(nextConfig, {
   org: "nope-nr",
